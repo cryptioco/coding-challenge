@@ -13,10 +13,10 @@ interface TransactionHistoryEntry {
   symbol: string
 }
 
-type TransactionHistory = TransactionHistoryEntry[]
+type TransactionHistory = readonly TransactionHistoryEntry[]
 
 async function retrieveDataForUser(db: DatabasePool, id: string): Promise<TransactionHistory> {
-  const result = db.many(sql.unsafe`
+  const result = db.any(sql.unsafe`
   select ...
   `)
 
